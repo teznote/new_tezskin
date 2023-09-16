@@ -4,8 +4,18 @@
         <meta charset="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no" />
         <title>{{ site.title }}</title>
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/wan2land/d2coding/d2coding-subset.css" />
+        <!-- <link rel="stylesheet" href="{{ '/assets/output.css' | relative_url }}" -->
+        <script src="https://cdn.tailwindcss.com"></script>
+        <script>
+            tailwind.config = {
+                theme: {
+                    fontFamily: {
+                        'mono': ['D2Coding', 'monospace'],
+                    }
+                }
+            }
+        </script>
     </head>
-    <body>
-        {{ content }}
-    </body>
+    {{ content }}
 </html>

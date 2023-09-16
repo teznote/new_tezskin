@@ -4,11 +4,42 @@
         <meta charset="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no" />
         <title>Tez' New_Skin</title>
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/wan2land/d2coding/d2coding-subset.css" />
+        <!-- <link rel="stylesheet" href="/assets/output.css" -->
+        <script src="https://cdn.tailwindcss.com"></script>
+        <script>
+            tailwind.config = {
+                theme: {
+                    fontFamily: {
+                        'mono': ['D2Coding', 'monospace'],
+                    }
+                }
+            }
+        </script>
     </head>
-    <body>
-        <div>
-    <h2 id="안녕하세요-hello-world">안녕하세요 Hello World!</h2>
-
-</div>
-    </body>
+    <body class="fixed top-0 bottom-0 left-0 right-0 font-mono bg-gray-50">
+    <div class="flex flex-col h-full max-w-5xl mx-auto">
+        <div class="flex-grow-0 flex-shrink-0 basis-[5rem]">
+            <div class="h-full p-2">
+                <div class="h-full bg-gray-300 border border-transparent border-solid shadow-xl">
+                    <div class="h-full p-2">
+                        <div class="flex items-center justify-between h-full">
+                            <h1>Title</h1>
+                            <div>Controls</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="flex-grow flex-shrink-0 min-h-0 basis-0">
+            <div class="h-full px-2 pb-2">
+                <div class="h-full bg-gray-300 border border-transparent border-solid shadow-xl">
+                    <div class="h-full p-2">
+                        본문입니다.
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
 </html>
