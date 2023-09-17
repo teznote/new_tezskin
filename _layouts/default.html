@@ -5,6 +5,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no" />
         <title>{{ site.title }}</title>
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/wan2land/d2coding/d2coding-subset.css" />
+        
         <!-- <link rel="stylesheet" href="{{ '/assets/output.css' | relative_url }}" -->
         <script src="https://cdn.tailwindcss.com"></script>
         <script>
@@ -13,9 +14,60 @@
                     fontFamily: {
                         'mono': ['D2Coding', 'monospace'],
                     }
-                }
+                },
+                // variants: {
+                //     extend: {
+                //         borderOpacity: ['hover'],
+                //     }
+                // }
             }
         </script>
+        <style type="text/tailwindcss">
+            @layer components {
+                .tez-section {
+                    @apply bg-stone-100 border border-stone-300 shadow-[1px_1px_2px_0px_rgba(120,113,108,1)];
+                }
+                a {
+                    @apply inline-block box-border text-sky-700 border border-dashed border-sky-700 border-opacity-0 break-all
+                    hover:border-opacity-100;
+                }
+            }
+        </style>
     </head>
-    {{ content }}
+    <body class="fixed top-0 bottom-0 left-0 right-0 font-mono text-base bg-gray-50 text-gray-950">
+        <div class="h-full max-w-5xl m-auto">
+            <div class="flex flex-col h-full gap-2 p-2 ">
+                <div class="h-full flex-[0_0_5rem] tez-section p-2">
+                    <div class="flex items-center justify-between h-full">
+                        <div id="site-title" class="flex-auto">
+                            <h1 class="text-base sm:text-2xl">
+                                <a href="#" class="after:content-['aa'] after:inline-block after:relative after:-top-4">{{ site.title }}</a>
+                            </h1>
+                        </div>
+                        <div class="flex-[0_0_auto]">
+                            <div class="flex gap-6">
+                                <div id="switch-light-dark">
+                                    Switch 1
+                                </div>
+                                <div id="switch-article-nav">
+                                    Switch 2
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="h-full flex-[1_0_0] tez-section p-2">
+                    <div id="page-title">
+                        {{- page.title -}}
+                    </div>
+                    <div id="page-desc">
+                        Last Updated:&nbsp;{{- page.updated -}}
+                    </div>
+                    <div id="page-main">
+                        {{- content -}}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </body>
 </html>

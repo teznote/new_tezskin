@@ -13,33 +13,66 @@
                     fontFamily: {
                         'mono': ['D2Coding', 'monospace'],
                     }
-                }
+                },
+                // variants: {
+                //     extend: {
+                //         borderOpacity: ['hover'],
+                //     }
+                // }
             }
         </script>
+        <style type="text/tailwindcss">
+            @layer components {
+                .tez-section {
+                    @apply bg-stone-100 border border-stone-300 shadow-[1px_1px_2px_0px_rgba(120,113,108,1)];
+                }
+                a {
+                    @apply inline-block box-border text-sky-700 border border-dashed border-sky-700 border-opacity-0 break-all
+                    hover:border-opacity-100;
+                }
+            }
+        </style>
     </head>
-    <body class="fixed top-0 bottom-0 left-0 right-0 font-mono bg-gray-50">
-    <div class="flex flex-col h-full max-w-5xl mx-auto">
-        <div class="flex-grow-0 flex-shrink-0 basis-[5rem]">
-            <div class="h-full p-2">
-                <div class="h-full bg-gray-300 border border-transparent border-solid shadow-xl">
-                    <div class="h-full p-2">
-                        <div class="flex items-center justify-between h-full">
-                            <h1>Title</h1>
-                            <div>Controls</div>
+    <body class="fixed top-0 bottom-0 left-0 right-0 font-mono text-base bg-gray-50 text-gray-950">
+        <div class="h-full max-w-5xl m-auto">
+            <div class="flex flex-col h-full gap-2 p-2 ">
+                <div class="h-full flex-[0_0_5rem] tez-section p-2">
+                    <div class="flex items-center justify-between h-full">
+                        <div id="site-title" class="flex-auto">
+                            <h1 class="text-base sm:text-2xl">
+                                <a href="#" class="after:content-['aa'] after:inline-block after:relative after:-top-4">Tez' New_Skin</a>
+                            </h1>
+                        </div>
+                        <div class="flex-[0_0_auto]">
+                            <div class="flex gap-6">
+                                <div id="switch-light-dark">
+                                    Switch 1
+                                </div>
+                                <div id="switch-article-nav">
+                                    Switch 2
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
-            </div>
-        </div>
-        <div class="flex-grow flex-shrink-0 min-h-0 basis-0">
-            <div class="h-full px-2 pb-2">
-                <div class="h-full bg-gray-300 border border-transparent border-solid shadow-xl">
-                    <div class="h-full p-2">
-                        본문입니다.
-                    </div>
+                <div class="h-full flex-[1_0_0] tez-section p-2">
+                    <div id="page-title">About...</div>
+                    <div id="page-desc">
+                        Last Updated:&nbsp;2023-09-17</div>
+                    <div id="page-main"><h2 id="tez-new_skin-repo-는">Tez’ New_Skin Repo 는…</h2>
+
+<p>Utility-First CSS 프레임워크인 <a href="https://tailwindcss.com/">tailwindcss</a> 를 알게되고 나서 써보고 싶은 생각이 들었다.</p>
+
+<p>취미로 블로그 자작을 즐기고는 했는데, 레이아웃을 복잡하게 가져갈 수록 (사실 그리 복잡한 구조도 아니지만…) CSS 를 적용하기 위한 네이밍에 고민이 많았다.</p>
+
+<p>그리고 개발할 때는 창을 이리저리 움직이며, 갑자기 먼저 정해놓았던 Semantic 네이밍이 맘에 안들경우나, 레이아웃을 바꿔야 하는 경우가 생긴다면 그야말로 현타가 올 때가 많았다.</p>
+
+<p><a href="https://tailwindcss.com/">tailwindcss</a> 는 이런 불편한 점들을 해결해 줄 수 있는 CSS 프레임워크였다. 물론 Html 파일이 나중에 보면 가독성이 매우 떨어진다는 단점이 없는 것은 아니나 편의성이 더 압도적으로 느껴졌다.</p>
+
+<p>어쨌든, 이 프레임워크로 <a href="https://pages.github.com/">Github Page</a> 테마를 만들어 보았다.</p>
+</div>
                 </div>
             </div>
         </div>
-    </div>
-</body>
+    </body>
 </html>
