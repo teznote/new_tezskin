@@ -31,6 +31,7 @@ a {
   display: flex; flex-direction: column;
   .aa{
     flex: 0 0 3rem;
+    background: var(--bg-b); border-bottom: 1px solid var(--fg-b);
     .aaa {
       height: 100%; max-width: 1024px; margin: 0 auto; padding: 0.5rem;
       .aaaa {
@@ -41,6 +42,7 @@ a {
         }
         .aaaab {
           flex: 0 0 auto;
+          display: flex; gap: 1rem;
         }
       }
     }
@@ -54,3 +56,46 @@ a {
 }
 
 // site-title
+.switch {
+  position: relative;
+  display: block; box-sizing: content-box;
+  height: 1.5rem; width: 3.5rem;
+  border: 1px solid var(--fg-b); border-radius: 9999px;
+  cursor: pointer;
+  >input {
+    height: 0; width: 0; opacity: 0;
+    &:checked~div:nth-of-type(2) {
+      left: 2rem;
+      >div {
+        left: -2rem;
+      }
+    }
+  }
+  >div:nth-of-type(1) {
+    position: absolute; top: 0; left: 0;
+    display: flex; align-items: center; justify-content: space-between;
+    height: 1.5rem; width: 3.5rem;
+    >i {
+      display: flex; align-items: center; justify-content: center;
+      height: 1.5rem; width: 1.5rem;
+    }
+  }
+  >div:nth-of-type(2) {
+    position: absolute; top: 0; left: 0;
+    height: 1.5rem; width: 1.5rem;
+    color: var(--bg-b); background: var(--fg-b); border-radius: 9999px;
+    overflow: hidden;
+    >div {
+      position: absolute; top: 0; left: 0;
+      display: flex; align-items: center; justify-content: space-between;
+      height: 1.5rem; width: 3.5rem;
+      >i {
+        display: flex; align-items: center; justify-content: center;
+        height: 1.5rem; width: 1.5rem;
+      }
+    }
+  }
+  div {
+    transition: left 0.4s;
+  }
+}

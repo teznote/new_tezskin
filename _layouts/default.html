@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="ko">
+<html lang="ko" class="preload">
   <head>
     <meta charset="utf-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1"/>
@@ -7,6 +7,7 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/hack-font@3.3.0/build/web/hack.min.css"/>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/typeface-nanum-square-neo@0.0.6/nanumsquareneo.min.css"/>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reset-css@5.0.2/reset.min.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.min.css"/>
     <link rel="stylesheet" href="./res/main.css"/>
   </head>
   <body>
@@ -18,7 +19,8 @@
               <a href="/">{{ site.title }}</a>
             </h1>
             <div class="aaaab">
-              {% include switch.html id="sw1" left="sun" %}
+              {% include switch.html id="sw1" left="sun" right="moon-stars" %}
+              {% include switch.html id="sw1" left="file-earmark-text" right="folder2" %}
             </div>
           </div>
         </div>
@@ -29,5 +31,34 @@
         </div>
       </div>
     </div>
+    <script>
+      var root = document.querySelector(':root')
+      var sw1_input = document.querySelector('#sw1 >input')
+      var sw2_input = document.querySelector('#sw2 >input')
+
+      var cur_theme = window.sessionStorage.getItem('theme') || (window.matchMedia("(prefers-color-scheme: dark)").matches ? 'dark' : 'light')
+      if (cur_theme === 'dark') {
+        sw1_input.checked = true
+        root.classList.add('dark')
+        window.sessionStorage.setItem('theme', 'dark')
+      } else {
+        root.classList.remove('dark')
+        window.sessionStorage.setItem('theme', 'light')
+      }
+
+      sw1_input.addEventListener('click', e => {
+        if (e.target.checked) {
+          root.classList.add('dark')
+          window.sessionStorage.setItem('theme', 'dark')
+        } else {
+          root.classList.remove('dark')
+          window.sessionStorage.setItem('theme', 'light')
+        }
+      })
+
+      document.addEventListener('DOMContentLoaded', e => {
+        root.classList.remove('preload')
+      })
+    </script>
   </body>
 </html>
