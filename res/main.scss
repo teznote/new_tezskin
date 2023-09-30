@@ -1,0 +1,56 @@
+---
+---
+
+// color scheme
+:root {
+  --bg-a: #f8f9fa; --bg-b: #e9ecef; --fg-a: #343a40; --fg-b: #7950f2;
+  &.dark {
+    --bg-a: #030507; --bg-b: #16191d; --fg-a: #dee2e6; --fg-b: #9775fa;
+  }
+}
+
+// layout
+* {
+  box-sizing: border-box;
+  -ms-overflow-style: none; scrollbar-width: none;
+  &::-webkit-scrollbar{
+    display: none;
+  }
+}
+body {
+  position: fixed; top: 0; right: 0; bottom: 0; left: 0;
+  font: 400 16px NanumSquareNeo,sans-serif; color: var(--fg-a); background: var(--bg-a);
+}
+a {
+  text-decoration: none; color: var(--fg-b); border: 1px dashed transparent;
+  &:hover {
+    border-color: var(--fg-b);
+  }
+}
+.a {
+  display: flex; flex-direction: column;
+  .aa{
+    flex: 0 0 3rem;
+    .aaa {
+      height: 100%; max-width: 1024px; margin: 0 auto; padding: 0.5rem;
+      .aaaa {
+        display: flex; align-items: center; justify-content: space-between;
+        height: 100%;
+        .aaaaa {
+          flex: 0 0 auto;
+        }
+        .aaaab {
+          flex: 0 0 auto;
+        }
+      }
+    }
+  }
+  .ab {
+    flex: 1 0 0; min-height: 0;
+    .aba {
+      height: 100%; max-width: 1024px; margin: 0 auto; padding: 0.5rem;
+    }
+  }
+}
+
+// site-title
