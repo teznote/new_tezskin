@@ -8,10 +8,14 @@
     --bg-a: #030507; --bg-b: #16191d; --fg-a: #dee2e6; --fg-b: #9775fa;
   }
 }
+.preload * {
+  transition: none !important;
+}
 
 // layout
 * {
   box-sizing: border-box;
+  -webkit-tap-highlight-color: transparent;
   -ms-overflow-style: none; scrollbar-width: none;
   &::-webkit-scrollbar{
     display: none;
@@ -22,13 +26,14 @@ body {
   font: 400 16px NanumSquareNeo,sans-serif; color: var(--fg-a); background: var(--bg-a);
 }
 a {
-  text-decoration: none; color: var(--fg-b); border: 1px dashed transparent;
+  text-decoration: none; word-break: break-all; color: var(--fg-b); border: 1px dashed transparent;
   &:hover {
     border-color: var(--fg-b);
   }
 }
 .a {
   display: flex; flex-direction: column;
+  height: 100%;
   .aa{
     flex: 0 0 3rem;
     background: var(--bg-b); border-bottom: 1px solid var(--fg-b);
@@ -49,13 +54,41 @@ a {
   }
   .ab {
     flex: 1 0 0; min-height: 0;
+    height: 100%;
     .aba {
       height: 100%; max-width: 1024px; margin: 0 auto; padding: 0.5rem;
+      .abaa {
+        height: 100%; width: 100%;
+        overflow: hidden;
+        .abaaa {
+          position: relative; left: 0;
+          display: flex;
+          height: 100%; width: 200%;
+          .abaaaa {
+            flex: 1 0 0;
+            height: 100%; min-width: 0;
+            overflow-y: scroll;
+          }
+          .abaaab {
+            flex: 1 0 0;
+            height: 100%; min-width: 0;
+            overflow-y: scroll;
+          }
+        }
+      }
     }
   }
 }
 
 // site-title
+#site-title {
+  >a:before {
+    content: '\f447'; font-family: bootstrap-icons; vertical-align: bottom;
+    display: inline-block; margin-right: 0.5rem;
+  }
+}
+
+// switch
 .switch {
   position: relative;
   display: block; box-sizing: content-box;
@@ -97,5 +130,80 @@ a {
   }
   div {
     transition: left 0.4s;
+  }
+}
+
+// text-to-nav
+#text-to-nav {
+  transition: left 0.4s;
+  &.sw2-checked {
+    left: -100%;
+  }
+}
+
+// post
+#post {
+  #post-title {
+    margin: 3rem 0;
+    font-size: 2rem; text-align: center;
+    &:before {
+      content: '\f6b0'; font-family: bootstrap-icons;
+      display: inline-block; margin-right: 0.5rem;
+    }
+    &:after {
+      content: '\f6b0'; font-family: bootstrap-icons;
+      display: inline-block; margin-left: 0.5rem;
+      transform: scale(-1, -1);
+    }
+  }
+  #post-desc {
+    text-align: right;
+  }
+  #post-main {
+    b, strong {
+      text-decoration: var(--fg-b) double underline; text-decoration-thickness: 1.2px; text-underline-offset: 0.25rem;
+    }
+    h2 {
+      margin: 3rem 0 1.5rem 0;
+      font-size: 1.5rem;
+      &:before {
+        content: '#';
+        display: inline-block; margin-right: 0.5rem;
+      }
+    }
+    pre, code, kbd, samp {
+      font-family: hack,monospace;
+    }
+    p, pre, div, ul, blockquote, h3, h4, h5, h6 {
+      margin: 1rem 0;
+      line-height: 1.5;
+      &[class] {
+        position: relative;
+        padding: 1.2rem 1rem 0.5rem 1rem;
+        font-size: 0.9rem;
+        background: var(--bg-b); border: 1px solid var(--fg-b);
+        &:before {
+          position: absolute; top: 0; left: 0;
+          content: ' ' attr(class) ' '; text-transform: uppercase; line-height: 1;
+          color: var(--bg-b); background: var(--fg-b);
+        }
+      }
+    }
+    pre >code {
+      display: block; width: 100%;
+      overflow-x: scroll;
+    }
+  }
+  #post-nav {
+    display: flex; align-items: center; justify-content: space-between;
+    height: 3rem;
+    #post-prev:before {
+      content: '\f27f'; font-family: bootstrap-icons; vertical-align: bottom;
+      display: inline-block; margin-right: 0.5rem;
+    }
+    #post-next:after {
+      content: '\f280'; font-family: bootstrap-icons; vertical-align: bottom;
+      display: inline-block; margin-left: 0.5rem;
+    }
   }
 }

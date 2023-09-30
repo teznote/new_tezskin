@@ -20,14 +20,29 @@
             </h1>
             <div class="aaaab">
               {% include switch.html id="sw1" left="sun" right="moon-stars" %}
-              {% include switch.html id="sw1" left="file-earmark-text" right="folder2" %}
+              {% include switch.html id="sw2" left="file-earmark-text" right="folder2" %}
             </div>
           </div>
         </div>
       </div>
       <div class="ab">
         <div class="aba">
-          본문
+          <div class="abaa">
+            <div id="text-to-nav" class="abaaa">
+              <div id="post" class="abaaaa">
+                <h1 id="post-title">{{ page.title }}</h1>
+                <div id="post-desc">Last updated: {{ page.updated }}</div>
+                <div id="post-main">{{ content }}</div>
+                <div id="post-nav">
+                  <a id="post-prev" href="#">PREV</a>
+                  <a id="post-next" href="#">NEXT</a>
+                </div>
+              </div>
+              <div class="abaaab">
+                Nav
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </div>
@@ -35,24 +50,39 @@
       var root = document.querySelector(':root')
       var sw1_input = document.querySelector('#sw1 >input')
       var sw2_input = document.querySelector('#sw2 >input')
+      var text_to_nav = document.querySelector('#text-to-nav')
 
-      var cur_theme = window.sessionStorage.getItem('theme') || (window.matchMedia("(prefers-color-scheme: dark)").matches ? 'dark' : 'light')
-      if (cur_theme === 'dark') {
-        sw1_input.checked = true
-        root.classList.add('dark')
-        window.sessionStorage.setItem('theme', 'dark')
-      } else {
-        root.classList.remove('dark')
-        window.sessionStorage.setItem('theme', 'light')
-      }
-
-      sw1_input.addEventListener('click', e => {
-        if (e.target.checked) {
+      var set_theme = t => {
+        if (t === 'dark') {
           root.classList.add('dark')
           window.sessionStorage.setItem('theme', 'dark')
         } else {
           root.classList.remove('dark')
           window.sessionStorage.setItem('theme', 'light')
+        }
+      }
+
+      var cur_theme = window.sessionStorage.getItem('theme') || (window.matchMedia("(prefers-color-scheme: dark)").matches ? 'dark' : 'light')
+      if (cur_theme === 'dark') {
+        sw1_input.checked = true
+        set_theme('dark')
+      } else {
+        set_theme('light')
+      }
+
+      sw1_input.addEventListener('click', e => {
+        if (e.target.checked) {
+          set_theme('dark')
+        } else {
+          set_theme('light')
+        }
+      })
+
+      sw2_input.addEventListener('click', e => {
+        if (e.target.checked) {
+          text_to_nav.classList.add('sw2-checked')
+        } else {
+          text_to_nav.classList.remove('sw2-checked')
         }
       })
 
