@@ -163,6 +163,13 @@ a {
     b, strong {
       text-decoration: var(--fg-b) double underline; text-decoration-thickness: 1.2px; text-underline-offset: 0.25rem;
     }
+    img, svg {
+      display: block; margin: 0 auto; max-width: 100%;
+      & +em {
+        display: block;
+        font-size: 0.9rem; font-style: italic; text-align: center;
+      }
+    }
     h2 {
       margin: 3rem 0 1.5rem 0;
       font-size: 1.5rem;
@@ -184,7 +191,8 @@ a {
         background: var(--bg-b); border: 1px solid var(--fg-b);
         &:before {
           position: absolute; top: 0; left: 0;
-          content: ' ' attr(class) ' '; text-transform: uppercase; line-height: 1;
+          content: attr(class); text-transform: uppercase; line-height: 1;
+          display: inline-block; padding: 0 0.5rem;
           color: var(--bg-b); background: var(--fg-b);
         }
       }
@@ -192,6 +200,13 @@ a {
     pre >code {
       display: block; width: 100%;
       overflow-x: scroll;
+    }
+    ul >li {
+      margin-left: 1rem;
+      &:before {
+        content: '-';
+        display: inline-block; width: 1rem; margin-left: -1rem;
+      }
     }
   }
   #post-nav {
@@ -204,6 +219,79 @@ a {
     #post-next:after {
       content: '\f280'; font-family: bootstrap-icons; vertical-align: bottom;
       display: inline-block; margin-left: 0.5rem;
+    }
+  }
+}
+
+//nav
+#nav {
+  display: flex; flex-direction: column; gap: 0.5rem;
+  height: 100%;
+  #nav-cats {
+    position: relative;
+    flex: 0 0 auto; min-height: 0; max-height: 40%; padding: 1.2rem 1rem 0.5rem 1rem;
+    font-size: 0.9rem; background: var(--bg-b); border: 1px solid var(--fg-b);
+    &:before {
+      position: absolute; top: 0; left: 0;
+      content: 'category'; text-transform: uppercase; line-height: 1;
+      display: inline-block; padding: 0 0.5rem;
+      color: var(--bg-b); background: var(--fg-b);
+    }
+    >div {
+      height: 100%; overflow-y: scroll;
+      >div {
+        padding-left: 0.5rem;
+        border-left: 2px solid var(--fg-b); border-radius: 0.5rem;
+        >div {
+          margin: 0.5rem 0;
+        }
+        >ul {
+          display: flex; flex-wrap: wrap; gap: 0.25rem 1rem;
+          >li {
+            border: 1px dashed transparent;
+            cursor: pointer;
+            &:hover {
+              border-color: var(--fg-a);
+            }
+            &:before {
+              content: '\f231'; font-family: bootstrap-icons; vertical-align: bottom;
+              display: inline-block; width: 1rem;
+            }
+            &.open {
+              color: var(--bg-b); background-color: var(--fg-a);
+              &.open:before {
+                content: '\f229'
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+  #nav-posts {
+    position: relative;
+    flex: 1 0 0; min-height: 0; padding: 1.2rem 1rem 0.5rem 1rem;
+    font-size: 0.9rem; background: var(--bg-b); border: 1px solid var(--fg-b);
+    &:before {
+      position: absolute; top: 0; left: 0;
+      content: 'post'; text-transform: uppercase; line-height: 1;
+      display: inline-block; padding: 0 0.5rem;
+      color: var(--bg-b); background: var(--fg-b);
+    }
+    >div {
+      height: 100%; overflow-y: scroll;
+      >ul {
+        >li a {
+          display: inline-block; margin: 0.25rem 0; padding-left: 1rem;
+          &:before {
+            content: '\f231'; font-family: bootstrap-icons; vertical-align: bottom;
+            display: inline-block; width: 1rem; margin-left: -1rem;
+          }
+          &.current {
+            color: var(--bg-b); background-color: var(--fg-a);
+          }
+        }
+      }
     }
   }
 }

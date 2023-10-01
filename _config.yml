@@ -5,3 +5,25 @@ kramdown:
   syntax_highlighter_opts:
     disable: true
 future: true
+
+cats:
+  - id: outer1
+    title: 큰 카테고리 1
+    subs:
+      - id: id1
+        title: 작은 카테고리 1
+        order: asc    ## order option: asc, title (default: desc)
+      - id: id2
+        title: 작은 카테고리 2
+      - id: id3
+        title: 작은 카테고리 3
+      - id: id4
+        title: 작은 카테고리 4
+  - id: outer2
+    title: 큰 카테고리 2
+    subs:
+      - id: id5
+        title: 작은 카테고리 5
+      - id: id6
+        title: 작은 카테고리 6
+        order: title

@@ -1,0 +1,36 @@
+---
+---
+
+<div id="nav-cats">
+  <div>
+    {% for cat in site.cats %}
+    <div cat="{{ cat.id }}">
+      <div>{{ cat.title }} ::</div>
+      <ul>
+        {% for sub in cat.subs %}
+        <li cat="{{ cat.id }}" sub="{{ sub.id }}">{{ sub.title }}</li>
+        {% endfor %}
+      </ul>
+    </div>
+    {% endfor %}
+  </div>
+</div>
+<div id="nav-posts">
+  <div>
+    {% for cat in site.cats %}
+    {% for sub in cat.subs %}
+    {% assign items = site.categories[sub.id] %}
+    {% if sub.order == "asc" %}{% assign items = items | reverse %}
+    {% elsif sub.order == "title" %}{% assign items = items | sort: "title" %}
+    {% endif %}
+    <ul>
+      {% for item in items %}
+      <li cat="{{ cat.id }}" sub="{{ sub.id }}">
+        <a href="{{ item.url | relative_url }}">{{ item.title }}</a>
+      </li>
+      {% endfor %}
+    </ul>
+    {% endfor %}
+    {% endfor %}
+  </div>
+</div>
