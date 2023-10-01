@@ -11,6 +11,9 @@
 .preload * {
   transition: none !important;
 }
+.hidden {
+  display: none !important;
+}
 
 // layout
 * {
@@ -195,6 +198,11 @@ a {
           display: inline-block; padding: 0 0.5rem;
           color: var(--bg-b); background: var(--fg-b);
         }
+      }
+    }
+    p, div, ul, blockquote {
+      code {
+        border: 1px dashed var(--fg-a);
       }
     }
     pre >code {

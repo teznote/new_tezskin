@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "테스트 Page "
+title: "테스트 Page"
 updated: 2023-09-30
 categories: home
 ---

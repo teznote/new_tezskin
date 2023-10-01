@@ -23,7 +23,7 @@
     {% if sub.order == "asc" %}{% assign items = items | reverse %}
     {% elsif sub.order == "title" %}{% assign items = items | sort: "title" %}
     {% endif %}
-    <ul>
+    <ul cat="{{ cat.id }}" sub="{{ sub.id }}" class="hidden">
       {% for item in items %}
       <li cat="{{ cat.id }}" sub="{{ sub.id }}">
         <a href="{{ item.url | relative_url }}">{{ item.title }}</a>

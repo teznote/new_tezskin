@@ -34,7 +34,7 @@
                 <h1 id="post-title">{{ page.title }}</h1>
                 <div id="post-desc">Last updated: {{ page.updated }}</div>
                 <div id="post-main">{{ content }}</div>
-                <div id="post-nav">
+                <div id="post-nav" class="hidden">
                   <a id="post-prev" href="#">PREV</a>
                   <a id="post-next" href="#">NEXT</a>
                 </div>
@@ -53,16 +53,46 @@
       }).then(r => {
         document.querySelector('#nav').innerHTML = r
       }).then(() => {
+        const cur_address = document.location.href.split('/').slice(-1)[0]
+        const cat_subs = document.querySelectorAll('#nav-cats li')
+        const post_subs = document.querySelectorAll('#nav-posts ul')
 
+        for (var x of cat_subs) {
+          x.addEventListener('click', e => {
+            for (var y of cat_subs) {
+              ;(e.target === y) ? y.classList.add('open') : y.classList.remove('open')
+            }
+            var t = e.target.getAttribute('sub')
+            for (var z of post_subs) {
+              ;(t === z.getAttribute('sub')) ? z.classList.remove('hidden') : z.classList.add('hidden')
+            }
+          })
+        }
+
+        if (cur_address) {
+          const posts = document.querySelectorAll('#nav-posts li')
+          for (var x of posts) {
+            var href = x.firstElementChild.getAttribute('href').split('/').slice(-1)[0]
+            if (cur_address === href) {
+              x.firstElementChild.classList.add('current')
+              var t = x.getAttribute('sub')
+              document.querySelector(`#nav-cats li[sub=${t}]`).dispatchEvent(new Event('click', {bubbles: true}))
+              x.parentElement.parentElement.scrollTo(0, x.offsetTop - x.clientHeight / 2 - x.parentElement.parentElement.clientHeight / 2)
+              break
+            }
+          }
+        } else {
+          cat_subs[0].dispatchEvent(new Event('click', {bubbles: true}))
+        }
       })
     </script>
     <script>
-      var root = document.querySelector(':root')
-      var sw1_input = document.querySelector('#sw1 >input')
-      var sw2_input = document.querySelector('#sw2 >input')
-      var text_to_nav = document.querySelector('#text-to-nav')
+      const root = document.querySelector(':root')
+      const sw1_input = document.querySelector('#sw1 >input')
+      const sw2_input = document.querySelector('#sw2 >input')
+      const text_to_nav = document.querySelector('#text-to-nav')
 
-      var set_theme = t => {
+      const set_theme = t => {
         if (t === 'dark') {
           root.classList.add('dark')
           window.sessionStorage.setItem('theme', 'dark')
@@ -72,7 +102,7 @@
         }
       }
 
-      var cur_theme = window.sessionStorage.getItem('theme') || (window.matchMedia("(prefers-color-scheme: dark)").matches ? 'dark' : 'light')
+      const cur_theme = window.sessionStorage.getItem('theme') || (window.matchMedia("(prefers-color-scheme: dark)").matches ? 'dark' : 'light')
       if (cur_theme === 'dark') {
         sw1_input.checked = true
         set_theme('dark')

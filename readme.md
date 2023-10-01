@@ -6,7 +6,7 @@
 
 ## 적용 Library 및 Framework
 
-깃허브 페이지의 기본 SSG(Static Site Generator) 인 [Jekyll](https://jekyllrb-ko.github.io/) 을 사용하였다. 기본 코드 하이라이터인 Rouge 가 맘에 안들어서 [Prism](https://prismjs.com/) 을 써보았다.
+깃허브 페이지의 기본 SSG(Static Site Generator) 인 [Jekyll](https://jekyllrb-ko.github.io/) 을 사용하였다. 기본 코드 하이라이터인 Rouge 가 맘에 안들어서 [highlight.js](https://highlightjs.org/) 를 써보았다.
 
 참고로 Rouge 작동이 안되도록 하려면 _config.yml 파일에 아래와 같은 구문을 삽입해야 한다.
 
@@ -18,4 +18,6 @@ kramdown:
 ```
 {:.yaml}
 
-서체는 [나눔 스퀘어 네오](https://campaign.naver.com/nanumsquare_neo/)를 바탕으로 [Hack](https://sourcefoundry.org/hack/) 폰트를 코드 표현 용도로 적용했다. 아이콘은 [Bootstrap 아이콘](https://icons.getbootstrap.com/)을 사용했다. 이들 모두 [Jsdelivr](https://www.jsdelivr.com/) 에서 찾을 수 있었다.
+[나눔 스퀘어 네오](https://campaign.naver.com/nanumsquare_neo/) 폰트를 기본 폰트로 사용하면서 [Hack](https://sourcefoundry.org/hack/) 폰트를 코드를 표현하기 위한 고정폭 폰트 용도로 적용했다. 아이콘은 [Bootstrap 아이콘](https://icons.getbootstrap.com/)을 사용했다.
+
+이들 모두 CDN 서비스인 [Jsdelivr](https://www.jsdelivr.com/) 와 [cdnjs](https://cdnjs.com/) 에서 찾을 수 있었다.
